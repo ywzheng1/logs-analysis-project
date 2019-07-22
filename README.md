@@ -14,6 +14,10 @@ Who are the most popular articles authors of all time?
 On which days did more than 1% of requests lead to errors?
 
 This tool is a Python program that uses the psycopg2 module to connect to the database.
+This project is using tools called [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1) to install and manage the VM. You'll need to install these to run this project
+
+##### Use a Terminal
+You'll be doing these exercises using a Unix-style terminal on your computer. If you are using a Mac or Linux system, your regular terminal program will do just fine. On Windows, I recommend using the Git Bash terminal that comes with the Git software. If you don't already have Git installed, download Git from [git-scm.com](https://git-scm.com/downloads).
 
 -----
 

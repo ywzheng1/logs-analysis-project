@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 """
 The database includes three tables:
     - The authors table includes information about the authors of articles.
@@ -32,7 +34,7 @@ most_popular_articles()
 def most_popular_author():
     db = psycopg2.connect(dbname=DBNAME)
     c = db.cursor()
-    c.execute("select name, view from articles_view, article_authors where articles_view.title = article_authors.title ORDER BY view DESC;")
+    c.execute("select name, view from articles_view, article_authors where articles_view.title = article_authors.title GROUP BY name ORDER BY view DESC;")
     result=c.fetchall()
     db.close()
     print("\nMost popular article authors of all time are: ")
@@ -49,7 +51,7 @@ most_popular_author()
 def error_calculate():
     db = psycopg2.connect(dbname=DBNAME)
     c = db.cursor()
-    c.execute("select round(cast((error_count/logcount::float)*100 as numeric) ,2) as Error_Percent, time from log_count, error_log where log_count.date = error_log.time and round(cast((error_count/logcount::float)*100 as numeric) ,2) > 1.0;")
+    c.execute("select round(cast((error_count/logcount::float)*100 as numeric) ,2) as Error_Percent, time from logcount, error_log where logcount.date = error_log.time and round(cast((error_count/logcount::float)*100 as numeric) ,2) > 1.0;")
     result=c.fetchall()
     db.close()
     print("\nDays have more than 1% of bad requests: ")
