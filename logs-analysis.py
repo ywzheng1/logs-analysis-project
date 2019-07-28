@@ -4,18 +4,20 @@ import psycopg2
 
 DBNAME = "news"
 
-query1 = """SELECT path, COUNT(ip)
-            FROM log where path != '/'
-            group by path order by COUNT DESC limit 3;"""
+query1 = """SELECT *
+            FROM articles_view
+            LIMIT 3"""
 
 query2 = """SELECT name, sum(articles_view.view) as view
             FROM article_authors, articles_view
             WHERE articles_view.title = article_authors.title
             GROUP BY name ORDER BY view DESC;"""
 
-query3 = """SELECT round(cast((error_count/logcount::float)*100 as numeric) ,2) as Error_Percent, error_log.time
+query3 = """SELECT round(cast((error_count/logcount::float)*100 as numeric) ,2)
+            as Error_Percent, error_log.time
             FROM logcount, error_log
-            WHERE logcount.time = error_log.time and round(cast((error_count/logcount::float)*100 as numeric) ,2) > 1.0;"""
+            WHERE logcount.time = error_log.time
+            and round(cast((error_count/logcount::float)*100 as numeric) ,2) > 1.0;"""
 
 
 # 1. What are the most popular three articles of all time? Which articles have been accessed the most?
