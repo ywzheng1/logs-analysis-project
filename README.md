@@ -30,6 +30,14 @@ To start on this project, you'll need database software (provided by a Linux vir
 This project makes use of the same Linux-based virtual machine (VM). You will need to install virtual box and vagrant to run this project.
 
 
+#### Start the virtual machine  
+From your terminal, inside the vagrant subdirectory, run the command `vagrant up`. This will cause Vagrant to download the Linux operating system and install it. This may take quite a while (many minutes) depending on how fast your Internet connection is.
+
+When `vagrant up` is finished running, you will get your shell prompt back. At this point, you can run `vagrant ssh` to log in to your newly installed Linux VM!
+
+
+
+
 #### Download database
 Database was provide by Udacity and available to download here: [database](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
 
@@ -39,6 +47,7 @@ To build the reporting tool, you'll need to load the site's data into your local
 
 To load the data, cd into the vagrant directory and use the command `psql -d news -f newsdata.sql`.
 Here's what this command does:
+
 
 
 #### Inside The database
